@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="orderCollection" format="json">
+      <types:shape format="weave" example="examples/ACME_ORDER_POST_EXAMPLE.json"><![CDATA[%dw 2.0
+
+type orderCollection = {|
+  ORDER_ID: String, 
+  CUST_ID: String, 
+  ORDER_DATE: String, 
+  ORDER_STATUS: String, 
+  PROD_ID: String, 
+  PROD_QTD: Number {"typeId": "int"}, 
+  PROD_UNIT_PRICE: Number {"typeId": "double"}, 
+  TOTAL_PRICE: Number {"typeId": "double"}
+|} {"example": "{\\\"ORDER_ID\\\":\\\"12\\\",\\\"CUST_ID\\\":\\\"3\\\",\\\"ORDER_DATE\\\":\\\"05\\/12\\/2019\\\",\\\"ORDER_STATUS\\\":\\\"ENTREGUE\\\",\\\"PROD_ID\\\":\\\"1\\\",\\\"PROD_QTD\\\":1,\\\"PROD_UNIT_PRICE\\\":50.00,\\\"TOTAL_PRICE\\\":50.00}"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="message" format="java">
+      <types:shape format="raml"><![CDATA[#%RAML 1.0 DataType
+type: string]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#d47976d0-e111-44fe-aefd-0f0c27ed34c0">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="orderCollection"/>
+        </types:message>
+      </types:input-event>
+      <types:output-event>
+        <types:message>
+          <types:payload type="orderCollection"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#6bd320d0-6a0e-4d81-bacf-2320e9ebffca">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="orderCollection"/>
+        </types:message>
+      </types:input-event>
+      <types:output-event>
+        <types:message>
+          <types:payload type="orderCollection"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>

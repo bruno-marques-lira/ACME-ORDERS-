@@ -1,0 +1,10 @@
+{
+	"ORDER_ID": "12",
+	"CUST_ID": "3",
+	"ORDER_DATE": "05/12/2019",
+	"ORDER_STATUS": "ENTREGUE",
+	"PROD_ID": "1",
+	"PROD_QTD": 1,
+	"PROD_UNIT_PRICE": 50.00,
+	"TOTAL_PRICE": 50.00
+}

@@ -1,0 +1,31 @@
+#%RAML 1.0
+title: ACME GET/POST Orders (DATA)
+
+types:
+ Order:
+   type:               object
+   properties:
+     ORDER_ID:         string
+     CUST_ID:          string
+     PROD_ID:          string
+     ORDER_DATE:       string
+     ORDER_STATUS:     string
+     PROD_QTD:         number
+     PROD_UNIT_PRICE:  number
+     TOTAL_PRICE:      number
+
+/orderGet/{id}:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: Order
+
+/orderPost/:
+  post:
+    responses:
+      200:
+        body:
+          application/json:
+            type: Order
